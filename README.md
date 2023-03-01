@@ -16,25 +16,25 @@ Optionally, you can use Mochitsuki to automate the step of importing your cards 
 
 ## Usage
 Clone this git repository to your local machine
-`git clone https://github.com/sharklightning/Mochitsuki.git`
+```git clone https://github.com/sharklightning/Mochitsuki.git```
 
 Change into the Mochitsuki directory
-`cd Mochitsuki`
+```cd Mochitsuki```
 
 Create a .env file to store your API keys:
-`touch app/src/.env`
+```touch app/src/.env```
 
 Add your OpenAI api key into the .env file:
-`echo OPENAI_KEY=your-api-key-here > app/src/.env`
+```echo OPENAI_KEY=your-api-key-here > app/src/.env```
 
 Optionally, add your Mochi api key as well:
-`echo MOCHI_KEY=your-api-key-here >> app/src/.env`
+```echo MOCHI_KEY=your-api-key-here >> app/src/.env```
 
 Build the Mochitsuki docker image
-`docker build -t tsuki-image .`
+```docker build -t tsuki-image .```
 
 Run a container instance of the Mochitsuki image
-`docker run -dp 127.0.0.1:5000:5000 tsuki-image`
+```docker run -dp 127.0.0.1:5000:5000 tsuki-image```
 
 Navigate to 127.0.0.1:5000 in the URL field of your web browser. 
 
