@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}
+Mochitsuki -- Welcome
+{% endblock %}
+
+{% block content %}
+<section>
+	<h1>Mochitsuki</h1>
+	<p>This form is a minimal front end for Mochitsuki. For best results, break up your text input into small to medium length paragraphs (3 to 5 sentences).</p>
+	<form action="/content-submission" method="post">
+		<fieldset>
+			<legend>Pick a model</legend>
+			<input type="radio" id="davinci">
+			<label for="davinci">text-davinci-003</label><br>
+			<input type="radio" id="curie">
+			<label for=curie">text-curie-001</label><br>
+			<input type="radio" id="babbage">
+			<label for="babbage">text-babbage-001</label>
+		</fieldset>
+
+		<div>
+			<label for="text-input"></label>
+			<textarea id="text-input" name="text-input" rows="25" cols="100">Enter the text you would like to generate cards from here</textarea>
+		</div>
+
+		<div>
+			<label for="deck">Choose a name for your deck:</label>
+			<input type="email" id="deck" name="deck">
+		</div>
+		<div>
+			<label for="parent">Parent deck (if applicable):</label>
+			<input type="text" id="parent" name="parent" value="">
+		</div>
+		
+		<div>
+			<button type="submit">Generate cards</button>
+		</div>
+	</form>
+</section>
+{% endblock %}
