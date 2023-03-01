@@ -11,7 +11,7 @@ Optionally you can configure Mochitsuki to automatically import to Mochi (this r
 
 You will need your own OpenAI account and API key. You can sign up for one [here](https://openai.com/product).
 
-Optionally, if you would like to automatically import cards/decks in Mochi, you will also need an API key from Mochi.
+Optionally, you can use Mochitsuki to automate the step of importing your cards to Mochi. This allows you to go from text input to imported flash cards in a single step, but requires a Mochi pro subscription so you can use their API.   
 
 ## Prompt
 
@@ -27,10 +27,7 @@ Please perform the following steps on the text given after "Text input:" below
 - Respond to this prompt with only the final form of the questions and answers, formatted according to the instructions above
 Text input: 
 ```
-
-Users are encouraged to improve upon this prompt or modify it to suit your particular needs. 
-
-It is one of our goals on this project to build a library of purpose suited prompts. Please do not hesitate to PR if you think you're prompt might be useful to others. 
+It is one of our goals on this project to build a library of purpose suited prompts. Users are encouraged to improve upon this prompt or modify it to suit your particular needs. Please do not hesitate to submit a PR if you think you're prompt might be useful to others. 
 
 ## Usage
 
