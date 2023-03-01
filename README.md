@@ -30,6 +30,11 @@ Please perform the following steps on the text given after "Text input:" below
 Text input: 
 ```
 
+Users are encouraged to modify upon this prompt or modify it to suit your particular needs. It is one of our goals on this project to build a library of purpose suited prompts. Feel free to make a PR if you think you're prompt might be helpful to others. 
+
+## Usage
+
+
 ## Roadmap
 - add anki support
 - add ocr 
