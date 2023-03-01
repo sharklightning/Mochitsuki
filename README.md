@@ -11,7 +11,7 @@ Optionally you can configure Mochitsuki to automatically import to Mochi (this r
 
 ## Prerequisites
 
-You will need your own OpenAI account and API key. You can sign up for one [here][].
+You will need your own OpenAI account and API key. You can sign up for one [here](https://openai.com/product).
 
 Optionally, if you would like to automatically import cards/decks in Mochi, you will also need an API key from Mochi.
 
