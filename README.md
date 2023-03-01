@@ -15,7 +15,7 @@ You will need your own OpenAI account and API key. You can sign up for one [here
 Optionally, you can use Mochitsuki to automate the step of importing your cards to Mochi. This allows you to go from text input to imported flash cards in a single step, but requires a Mochi pro subscription so you can use their API.   
 
 ## Usage
-Clone this git repository to your local machine\n
+Clone this git repository to your local machine  
 ```git clone https://github.com/sharklightning/Mochitsuki.git```
 
 Change into the Mochitsuki directory\n
