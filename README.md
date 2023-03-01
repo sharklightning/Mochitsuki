@@ -1,6 +1,4 @@
 # Mochitsuki
-An open source GPT-3 flashcard generator for Mochi, Anki
-
 > **Mochitsuki**: The Japanese tradition of "mochi pounding" at the end of rice harvest, when the grain is pounded into soft dough to enjoy throughout the holiday after a long harvest season.
 
 ## Introduction
