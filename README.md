@@ -15,25 +15,25 @@ You will need your own OpenAI account and API key. You can sign up for one [here
 Optionally, you can use Mochitsuki to automate the step of importing your cards to Mochi. This allows you to go from text input to imported flash cards in a single step, but requires a Mochi pro subscription so you can use their API.   
 
 ## Usage
-Clone this git repository to your local machine
+Clone this git repository to your local machine\b
 ```git clone https://github.com/sharklightning/Mochitsuki.git```
 
-Change into the Mochitsuki directory
+Change into the Mochitsuki directory\b
 ```cd Mochitsuki```
 
-Create a .env file to store your API keys:
+Create a .env file to store your API keys:\b
 ```touch app/src/.env```
 
-Add your OpenAI api key into the .env file:
+Add your OpenAI api key into the .env file:\b
 ```echo OPENAI_KEY=your-api-key-here > app/src/.env```
 
-Optionally, add your Mochi api key as well:
+Optionally, add your Mochi api key as well:\b
 ```echo MOCHI_KEY=your-api-key-here >> app/src/.env```
 
-Build the Mochitsuki docker image
+Build the Mochitsuki docker image\b
 ```docker build -t tsuki-image .```
 
-Run a container instance of the Mochitsuki image
+Run a container instance of the Mochitsuki image\b
 ```docker run -dp 127.0.0.1:5000:5000 tsuki-image```
 
 Navigate to 127.0.0.1:5000 in the URL field of your web browser. 
