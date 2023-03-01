@@ -5,7 +5,7 @@
 
 Mochitsuki takes any text input. By default it generates flashcards using OpenAI's GPT-3 Davinci model, in markdown format. 
 
-Optionally you can configure Mochitsuki to automatically import to Mochi (this requires Mochi Pro subscription). Alternatively, you can dump the cards as an Anki or Mochi export and manually import them to your preferred flashcard application. 
+Optionally you can configure Mochitsuki to automatically import to [Mochi](https://mochi.cards/) (this requires Mochi Pro subscription). Alternatively, you can dump the cards as an Anki or Mochi export and manually import them to your preferred flashcard application. 
 
 ## Prerequisites
 
