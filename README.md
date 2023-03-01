@@ -13,6 +13,9 @@ You will need your own OpenAI account and API key. You can sign up for one [here
 
 Optionally, you can use Mochitsuki to automate the step of importing your cards to Mochi. This allows you to go from text input to imported flash cards in a single step, but requires a Mochi pro subscription so you can use their API.   
 
+## Usage
+
+
 ## Prompt
 
 Currently, the working default prompt is:
@@ -30,9 +33,6 @@ Text input:
 Users are encouraged to improve upon this prompt or modify it to suit your particular needs. 
 
 It is one of our goals on this project to build a library of purpose suited prompts. Please do not hesitate to submit a PR if you think you're prompt might be useful to others. 
-
-## Usage
-
 
 ## Roadmap
 - add anki support
