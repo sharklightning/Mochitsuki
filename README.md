@@ -27,7 +27,9 @@ Please perform the following steps on the text given after "Text input:" below
 - Respond to this prompt with only the final form of the questions and answers, formatted according to the instructions above
 Text input: 
 ```
-It is one of our goals on this project to build a library of purpose suited prompts. Users are encouraged to improve upon this prompt or modify it to suit your particular needs. Please do not hesitate to submit a PR if you think you're prompt might be useful to others. 
+Users are encouraged to improve upon this prompt or modify it to suit your particular needs. 
+
+It is one of our goals on this project to build a library of purpose suited prompts. Please do not hesitate to submit a PR if you think you're prompt might be useful to others. 
 
 ## Usage
 
