@@ -61,7 +61,8 @@ It is one of our goals on this project to build a library of purpose suited prom
 
 ## Examples
 #### Basic flashcard prompt (default)
-***Prompt:***
+***Prompt:***  
+
 Please perform the following steps on the text given after "Text input:" below 
 - Extract and condense the most important details of the text
 - Use these bullet points to generate flash card style question and answer pairs
@@ -72,11 +73,13 @@ Please perform the following steps on the text given after "Text input:" below
 - Respond to this prompt with only the final form of the questions and answers, formatted according to the instructions above
 
 Text input: 
+
 "IP is a routed protocol and a logical addressing method that operates at the Network layer of the OSI model. IPv4 supports unicast, multicast, and broadcast addressing of packets.
 
 A basic IPv4 header without options is 20 octets in length; 20 octets is equal to 20 bytes, or 160 bits."
 
-***Response:***
+***Response:***  
+
 Q: What is IP?  
 A: IP is a routed protocol that operates at the Network layer of the OSI model.
 
@@ -88,6 +91,7 @@ A: 20 octets (or 20 bytes, or 160 bits).
 
 #### Coding prompt (general):
 ***Prompt***  
+
 Write a flashcard to help remember the following topic: 
 How to convert a for loop to a list comprehension in python
 - Give an example of code in the question
@@ -95,6 +99,7 @@ How to convert a for loop to a list comprehension in python
 - Abbreviate the words "Question" and "Answer" as Q and A respectively
 
 ***Response***  
+
 Q: How to convert a for loop to a list comprehension in python (ex. `for i in range(5):`)?  
 A: Create a new list and use a `[expression for item in list]` syntax to append items to the list. 
 ```
