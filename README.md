@@ -44,17 +44,17 @@ Navigate to 127.0.0.1:5000 in the URL field of your web browser.
 ## Prompt
 
 Currently, the working default prompt is:
-```
-Please perform the following steps on the text given after "Text input:" below 
-- Extract and condense the most important details of the text
-- Use these bullet points to generate flash card style question and answer pairs
-- Always begin a question with "Q:"
-- Always begin an answer with "A:"
-- If the text contains code blocks, use code examples in your  questions and answers as appropriate, using markdown to format the examples as a code block
-- Format the answers in concise bullet points
-- Respond to this prompt with only the final form of the questions and answers, formatted according to the instructions above
-Text input: 
-```
+
+>Please perform the following steps on the text given after "Text input:" below 
+>- Extract and condense the most important details of the text
+>- Use these bullet points to generate flash card style question and answer pairs
+>- Always begin a question with "Q:"
+>- Always begin an answer with "A:"
+>- If the text contains code blocks, use code examples in your  questions and answers as appropriate, using markdown to format the examples as a code block
+>- Format the answers in concise bullet points
+>- Respond to this prompt with only the final form of the questions and answers, formatted according to the instructions above
+>Text input: 
+
 Users are encouraged to improve upon this prompt or modify it to suit your particular needs. 
 
 It is one of our goals on this project to build a library of purpose suited prompts. Please do not hesitate to submit a PR if you think you're prompt might be useful to others. 
