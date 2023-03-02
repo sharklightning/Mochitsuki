@@ -41,7 +41,7 @@ Alternatively, if you would like to run Mochitsuki in development mode so that y
 
 Navigate to 127.0.0.1:5000 in the URL field of your web browser. 
 
-## Prompt
+## Default Prompt
 
 Currently, the working default prompt is:
 
