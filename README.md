@@ -22,13 +22,13 @@ Change into the Mochitsuki directory
 ```cd Mochitsuki```
 
 Create a .env file to store your API keys:  
-```touch app/src/.env```
+```touch src/.env```
 
 Add your OpenAI api key into the .env file:  
-```echo OPENAI_KEY=your-api-key-here > app/src/.env```
+```echo OPENAI_KEY=your-api-key-here > src/.env```
 
 Optionally, add your Mochi api key as well:  
-```echo MOCHI_KEY=your-api-key-here >> app/src/.env```
+```echo MOCHI_KEY=your-api-key-here >> src/.env```
 
 Build the Mochitsuki docker image  
 ```docker build -t tsuki-image .```
