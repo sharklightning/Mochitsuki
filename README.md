@@ -63,42 +63,42 @@ It is one of our goals on this project to build a library of purpose suited prom
 
 ***Text input:***
 
-"IP is a routed protocol and a logical addressing method that operates at the Network layer of the OSI model. IPv4 supports unicast, multicast, and broadcast addressing of packets. A basic IPv4 header without options is 20 octets in length; 20 octets is equal to 20 bytes, or 160 bits."
+>"IP is a routed protocol and a logical addressing method that operates at the Network layer of the OSI model. IPv4 supports unicast, multicast, and broadcast addressing of packets. A basic IPv4 header without options is 20 octets in length; 20 octets is equal to 20 bytes, or 160 bits."
 
 ***Response:***  
 
-Q: What is IP?  
-A: IP is a routed protocol that operates at the Network layer of the OSI model.
+>Q: What is IP?  
+>A: IP is a routed protocol that operates at the Network layer of the OSI model.
 
-Q: What types of addressing does IPv4 support?  
-A: IPv4 supports unicast, multicast, and broadcast addressing of packets.
+>Q: What types of addressing does IPv4 support?  
+>A: IPv4 supports unicast, multicast, and broadcast addressing of packets.
 
-Q: How many octets is a basic IPv4 header without options?  
-A: 20 octets (or 20 bytes, or 160 bits).
+>Q: How many octets is a basic IPv4 header without options?  
+>A: 20 octets (or 20 bytes, or 160 bits).
 
 ## Alternative prompts
 
 ### Coding prompt (general):
 ***Prompt***  
 
-Write a flashcard to help remember the following topic:  
-How to convert a for loop to a list comprehension in python
-- Give an example of code in the question
-- Format any code in blocks formatted with markdown
-- Abbreviate the words "Question" and "Answer" as Q and A respectively
+>Write a flashcard to help remember the following topic:  
+>How to convert a for loop to a list comprehension in python
+>- Give an example of code in the question
+>- Format any code in blocks formatted with markdown
+>- Abbreviate the words "Question" and "Answer" as Q and A respectively
 
 ***Response***  
 
-Q: How to convert a for loop to a list comprehension in python (ex. `for i in range(5):`)?  
+>Q: How to convert a for loop to a list comprehension in python (ex. `for i in range(5):`)?  
 
-A: Create a new list and use a `[expression for item in list]` syntax to append items to the list. 
-```
-old_list = []
-for i in range(5):
-    old_list.append(i)
-
-new_list = [i for i in range(5)]
-```
+>A: Create a new list and use a `[expression for item in list]` syntax to append items to the list. 
+>```
+>old_list = []
+>for i in range(5):
+>    old_list.append(i)
+>
+>new_list = [i for i in range(5)]
+>```
 
 ## Roadmap
 - add anki support
