@@ -53,6 +53,7 @@ Currently, the working default prompt is:
 >- If the text contains code blocks, use code examples in your  questions and answers as appropriate, using markdown to format the examples as a code block
 >- Format the answers in concise bullet points
 >- Respond to this prompt with only the final form of the questions and answers, formatted according to the instructions above
+
 >Text input: 
 
 Users are encouraged to improve upon this prompt or modify it to suit your particular needs. 
