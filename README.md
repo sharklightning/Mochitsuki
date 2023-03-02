@@ -77,25 +77,25 @@ Text input:
 A basic IPv4 header without options is 20 octets in length; 20 octets is equal to 20 bytes, or 160 bits."
 
 ***Response:***
-Q: What is IP?
+Q: What is IP?  
 A: IP is a routed protocol that operates at the Network layer of the OSI model.
 
-Q: What types of addressing does IPv4 support?
+Q: What types of addressing does IPv4 support?  
 A: IPv4 supports unicast, multicast, and broadcast addressing of packets.
 
-Q: How many octets is a basic IPv4 header without options?
+Q: How many octets is a basic IPv4 header without options?  
 A: 20 octets (or 20 bytes, or 160 bits).
 
 #### Coding prompt (general):
-***Prompt***
+***Prompt***  
 Write a flashcard to help remember the following topic: 
 How to convert a for loop to a list comprehension in python
 - Give an example of code in the question
 - Format any code in blocks formatted with markdown
 - Abbreviate the words "Question" and "Answer" as Q and A respectively
 
-***Response***
-Q: How to convert a for loop to a list comprehension in python (ex. `for i in range(5):`)?
+***Response***  
+Q: How to convert a for loop to a list comprehension in python (ex. `for i in range(5):`)?  
 A: Create a new list and use a `[expression for item in list]` syntax to append items to the list. 
 ```
 old_list = []
