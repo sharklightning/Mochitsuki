@@ -60,23 +60,10 @@ Users are encouraged to improve upon this prompt or modify it to suit your parti
 It is one of our goals on this project to build a library of purpose suited prompts. Please do not hesitate to submit a PR if you think you're prompt might be useful to others. 
 
 ## Examples
-#### Basic flashcard prompt (default)
-***Prompt:***  
+#### Basic flashcard (default)
+***Text input:***
 
-Please perform the following steps on the text given after "Text input:" below 
-- Extract and condense the most important details of the text
-- Use these bullet points to generate flash card style question and answer pairs
-- Always begin a question with "Q:"
-- Always begin an answer with "A:"
-- If the text contains code blocks, use code examples in your  questions and answers as appropriate, using markdown to format the examples as a code block
-- Format the answers in concise bullet points
-- Respond to this prompt with only the final form of the questions and answers, formatted according to the instructions above
-
-Text input: 
-
-"IP is a routed protocol and a logical addressing method that operates at the Network layer of the OSI model. IPv4 supports unicast, multicast, and broadcast addressing of packets.
-
-A basic IPv4 header without options is 20 octets in length; 20 octets is equal to 20 bytes, or 160 bits."
+"IP is a routed protocol and a logical addressing method that operates at the Network layer of the OSI model. IPv4 supports unicast, multicast, and broadcast addressing of packets. A basic IPv4 header without options is 20 octets in length; 20 octets is equal to 20 bytes, or 160 bits."
 
 ***Response:***  
 
@@ -92,7 +79,7 @@ A: 20 octets (or 20 bytes, or 160 bits).
 #### Coding prompt (general):
 ***Prompt***  
 
-Write a flashcard to help remember the following topic: 
+Write a flashcard to help remember the following topic:  
 How to convert a for loop to a list comprehension in python
 - Give an example of code in the question
 - Format any code in blocks formatted with markdown
@@ -101,6 +88,7 @@ How to convert a for loop to a list comprehension in python
 ***Response***  
 
 Q: How to convert a for loop to a list comprehension in python (ex. `for i in range(5):`)?  
+
 A: Create a new list and use a `[expression for item in list]` syntax to append items to the list. 
 ```
 old_list = []
