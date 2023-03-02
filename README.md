@@ -59,8 +59,8 @@ Users are encouraged to improve upon this prompt or modify it to suit your parti
 
 It is one of our goals on this project to build a library of purpose suited prompts. Please do not hesitate to submit a PR if you think you're prompt might be useful to others. 
 
-## Examples
-#### Basic flashcard (default)
+### Example:
+
 ***Text input:***
 
 "IP is a routed protocol and a logical addressing method that operates at the Network layer of the OSI model. IPv4 supports unicast, multicast, and broadcast addressing of packets. A basic IPv4 header without options is 20 octets in length; 20 octets is equal to 20 bytes, or 160 bits."
@@ -76,7 +76,9 @@ A: IPv4 supports unicast, multicast, and broadcast addressing of packets.
 Q: How many octets is a basic IPv4 header without options?  
 A: 20 octets (or 20 bytes, or 160 bits).
 
-#### Coding prompt (general):
+## Alternative prompts
+
+### Coding prompt (general):
 ***Prompt***  
 
 Write a flashcard to help remember the following topic:  
