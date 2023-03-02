@@ -53,7 +53,7 @@ Currently, the working default prompt is:
 >- If the text contains code blocks, use code examples in your  questions and answers as appropriate, using markdown to format the examples as a code block
 >- Format the answers in concise bullet points
 >- Respond to this prompt with only the final form of the questions and answers, formatted according to the instructions above  
->Text input: 
+>Text input: {Text input}
 
 ### Example:
 
@@ -82,10 +82,14 @@ It is one of our goals on this project to build a library of purpose suited prom
 ***Prompt***  
 
 >Write a flashcard to help remember the following topic:  
->How to convert a for loop to a list comprehension in python
+>{Text input}
 >- Give an example of code in the question
 >- Format any code in blocks formatted with markdown
 >- Abbreviate the words "Question" and "Answer" as Q and A respectively
+
+***Text input***
+
+How to convert a for loop to a list comprehension in python
 
 ***Response***  
 
