@@ -55,10 +55,6 @@ Currently, the working default prompt is:
 >- Respond to this prompt with only the final form of the questions and answers, formatted according to the instructions above  
 >Text input: 
 
-Users are encouraged to improve upon this prompt or modify it to suit your particular needs. 
-
-It is one of our goals on this project to build a library of purpose suited prompts. Please do not hesitate to submit a PR if you think you're prompt might be useful to others. 
-
 ### Example:
 
 ***Text input:***
@@ -75,6 +71,10 @@ It is one of our goals on this project to build a library of purpose suited prom
 
 >Q: How many octets is a basic IPv4 header without options?  
 >A: 20 octets (or 20 bytes, or 160 bits).
+
+Users are encouraged to improve upon this prompt or modify it to suit your particular needs. 
+
+It is one of our goals on this project to build a library of purpose suited prompts. Please do not hesitate to submit a PR if you think you're prompt might be useful to others. 
 
 ## Alternative prompts
 
