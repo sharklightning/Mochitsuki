@@ -14,17 +14,21 @@ Mochitsuki -- Welcome
 		<fieldset>
 		{% for subfield in form.model %}
 		<div>
-			{{ subfield(id=subfield.id, value=subfield.data) }}
+			{% if subfield.data == form.model.data %}
+			{{ subfield(id=subfield.id, value=subfield.data, checked=true) }}
+			{% else %}
+			{{ subfield(id=subfield.id, value=subfield.data, checked= subfield.data == form.model.choices[0][0] ) }}
+			{% endif %}
 			{{ subfield.label }}
 		</div>
 		{% endfor %}
 		</fieldset>
 
-		{{ form.textinput(id="text-input", rows="10", cols="75", placeholder="Enter the text you would like to generate cards from here") }}
+		{{ form.textinput(id="text-input", rows="10", cols="75", placeholder="Enter the text you would like to generate cards from here") | safe }}
 		<div>
 			<button type="submit">Generate cards</button>
 		</div>
-		{{ form.submit }}
+		<!-- {{ form.submit }} -->
 	</form>
 </section>
 {% endblock %}

@@ -1,7 +1,7 @@
 import os
 from forms import WelcomeForm
 from mochitsuki import *
-from flask import Flask, render_template, url_for, request, flash
+from flask import Flask, render_template, url_for, request, flash, redirect, session
 from logging import DEBUG
 
 #load ENV variable
@@ -21,25 +21,28 @@ def store_selections(textinput, model):
     ))
 
 @app.route('/', methods=['GET', 'POST'])
-def index():
+async def index():
     form = WelcomeForm()
+    # if session.get('model'):
+    #     form.model.data = session.get('model') # Check if model is stored in the session and persist it if so
     if form.validate_on_submit():
         textinput = form.textinput.data
         model = form.model.data
+        session['model'] = model
         store_selections(textinput, model)
-        flash("Request submitted: {}".format(textinput))
         app.logger.debug("MODEL= " + model + ", INPUT= " + textinput)
-    return render_template('index.html', form=form)
+        flash("Request submitted to: {}".format(model))
 
-# @app.route('/', methods=['GET', 'POST'])
-# def index():
-#     if request.method == "POST":
-#         textinput = request.form['text-input']
-#         model = request.form['model']
-#         store_selections(textinput, model)
-#         flash("Request to {} successfully submitted".format(model))
-#         # app.logger.debug("MODEL= " + model + "INPUT= " + textinput)
-#     return render_template('index.html')
+        await query_gpt(textinput, model)
+        for file in os.listdir("src/cards/"):
+            if file != '.gitignore':
+                file_name = "src/cards/" + file
+                new_card(file_name)
+                os.remove(file_name)
+
+        return redirect(url_for('index'))
+    return render_template('index.html', form=form)
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0')
+

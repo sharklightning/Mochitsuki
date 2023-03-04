@@ -1,4 +1,5 @@
 flask
+flask[async]
 flask-wtf
 python-dotenv
 openai

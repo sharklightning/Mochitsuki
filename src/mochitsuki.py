@@ -3,6 +3,7 @@ import re
 import os
 import httpx 
 import logging
+import asyncio
 from prompts import Prompt
 from dotenv import load_dotenv
 from pprint import pprint as pp
@@ -11,7 +12,7 @@ from print_response import print_response
 def configure():
     load_dotenv()
 
-def query_gpt(input_file, model="text-davinci-003", prompt=Prompt()):
+async def query_gpt(text, model="text-davinci-003", prompt=Prompt()):
     """Queries OpenAI to generate a flashcard.
 
     Args:
@@ -21,8 +22,6 @@ def query_gpt(input_file, model="text-davinci-003", prompt=Prompt()):
     """
     openai.api_key = os.getenv("OPENAI_KEY")
 
-    with open(input_file, "r") as temp:
-        text = temp.read()
     
     paragraphs = re.split('\n\n+', text)
 
@@ -41,10 +40,10 @@ def query_gpt(input_file, model="text-davinci-003", prompt=Prompt()):
 
         answer = response.choices[0].text.strip()
 
-        with open(f"temp/temp_{i}.md", "w+") as temp:
+        with open(f"src/temp/temp_{i}.md", "w+") as temp:
             temp.write(f"{answer}")
         
-        with open(f"temp/temp_{i}.md", "r") as f:
+        with open(f"src/temp/temp_{i}.md", "r") as f:
             contents = f.readlines()
  
         inc = 0
@@ -57,11 +56,11 @@ def query_gpt(input_file, model="text-davinci-003", prompt=Prompt()):
             except:
                 break
 
-        with open(f"cards/flashcard_{i}.md", "w") as file:
+        with open(f"src/cards/flashcard_{i}.md", "w") as file:
             contents = "".join(contents)
             file.write(contents)
 
-        os.remove(f"temp/temp_{i}.md")
+        os.remove(f"src/temp/temp_{i}.md")
 
 def new_deck(name):
     """Creates a new deck in Mochi
@@ -139,7 +138,5 @@ def new_card(file):
                   }
 
         card = httpx.post(site, auth=apikey, headers=headers, json=payload)
-
-        return card
 
 
