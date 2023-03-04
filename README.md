@@ -37,7 +37,7 @@ Run a container instance of the Mochitsuki image
 ```docker run -dp 127.0.0.1:5000:5000 tsuki-image```
 
 Alternatively, if you would like to run Mochitsuki in development mode so that your local changes to the source code will be synced to the running container instance, use:  
-```docker-compose up build```
+```docker-compose up --build```
 
 Navigate to 127.0.0.1:5000 in the URL field of your web browser. 
 

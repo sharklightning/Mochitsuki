@@ -155,18 +155,35 @@ nav a:hover {
    Author's custom styles
    ========================================================================== */
 
+form {
+    color:#222
+}
 
+fieldset {
+    color:#ccc;
+}
 
+label {
+    color: #ccc;
+}
 
+.flashes ul {
+    margin: 0 0;
+    background: #FFD6A3;
+    color: #000;
 
+    list-style-type: none;
+    list-style: none;
+}
 
+.flashes ul{
+    background-color: #FFD6A3;
+    color: #000;
+}
 
-
-
-
-
-
-
+article.flashes {
+    margin-bottom: 1em;
+}
 
 
 /* ==========================================================================

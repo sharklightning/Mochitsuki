@@ -3,6 +3,7 @@ import re
 import os
 import httpx 
 import logging
+from prompts import Prompt
 from dotenv import load_dotenv
 from pprint import pprint as pp
 from print_response import print_response
@@ -10,26 +11,27 @@ from print_response import print_response
 def configure():
     load_dotenv()
 
-def query_gpt(input_file):
-    # Authenticate with the OpenAI API by setting your API key
-    openai.api_key = os.getenv("OPENAI_KEY)
+def query_gpt(input_file, model="text-davinci-003", prompt=Prompt()):
+    """Queries OpenAI to generate a flashcard.
 
-    # Open the text file and read its contents
+    Args:
+        input_file: a plain text file containing the paragraphs you would like to include in the prompt for processing
+        model: the OpenAI model you would like to ingest your prompt
+
+    """
+    openai.api_key = os.getenv("OPENAI_KEY")
+
     with open(input_file, "r") as temp:
         text = temp.read()
     
-    # Split the text into paragraphs
     paragraphs = re.split('\n\n+', text)
 
-    # Loop over each paragraph and generate a flashcard
     for i, paragraph in enumerate(paragraphs):
-        # Set the prompt for GPT to generate a flashcard
-        prompt = f"Please perform the following steps on the text given after \"Text input:\" below \n- Extract and condense the most important details of the text\n- Use these bullet points to generate flash card style question and answer pairs\n- Always begin a question with \"Q:\"\n- Always begin an answer with \"A:\"\n- If the text contains code blocks, use code examples in your  questions and answers as appropriate, using markdown to format the examples as a code block\n-Be sure to include any important context in the question portion\n- Format the answers in concise bullet points\n- Respond to this prompt with only the final form of the questions and answers, formatted according to the instructions above\nText input: \n{paragraph}"
+        final_prompt = prompt.prompt + f"{paragraph}"
         
-        # Generate the flashcard using GPT
         response = openai.Completion.create(
-            engine="text-davinci-003",
-            prompt=prompt,
+            engine=model,
+            prompt=final_prompt,
             temperature=0.7,
             max_tokens=3400,
             top_p=1,
@@ -37,10 +39,8 @@ def query_gpt(input_file):
             presence_penalty=0
         )
 
-        # Extract the answer from the response
         answer = response.choices[0].text.strip()
 
-        # Save the flashcard as a markdown file with formatting for flashcards
         with open(f"temp/temp_{i}.md", "w+") as temp:
             temp.write(f"{answer}")
         
@@ -71,7 +71,6 @@ def new_deck(name):
         parent: If you are creating a nested deck, supply the parent here
     """
 
-    # Create a basic logger using a common configuration
     logging.basicConfig(
         format="%(asctime)s %(levelname)-8s %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
@@ -99,11 +98,7 @@ def new_deck(name):
 
     return deck
 
-def new_card(file):
-
-    with open(file, "rt", encoding="utf-8") as f:
-        data = f.readlines()
-    
+def format_data(data):
     content = []
     string = ''
     for i in data:
@@ -112,7 +107,15 @@ def new_card(file):
             string = ''
         else:
             string += i
+    content.append(string)  # Add the final string to the content list
+    return content
 
+def new_card(file):
+
+    with open(file, "rt", encoding="utf-8") as f:
+        data = f.readlines()
+    
+    content = format_data(data)
 
     for card in content:
         # Create a basic logger using a common configuration
@@ -136,5 +139,7 @@ def new_card(file):
                   }
 
         card = httpx.post(site, auth=apikey, headers=headers, json=payload)
+
+        return card
 
 
