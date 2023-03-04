@@ -105,7 +105,8 @@ How to convert a for loop to a list comprehension in python
 >```
 
 ## Roadmap
-- add anki support
-- add ocr 
+- build in concurrency and rate limiting safegaurds for large batches
+- add support for anki export/import
 - develop browser extension for converting highlighted text
+- add ocr 
 - mobile app
