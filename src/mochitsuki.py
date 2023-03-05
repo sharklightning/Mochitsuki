@@ -4,6 +4,7 @@ import os
 import httpx 
 import logging
 import asyncio
+import json
 from prompts import Prompt
 from dotenv import load_dotenv
 from pprint import pprint as pp
@@ -16,9 +17,9 @@ async def query_gpt(text, model="text-davinci-003", prompt=Prompt()):
     """Queries OpenAI to generate a flashcard.
 
     Args:
-        input_file: a plain text file containing the paragraphs you would like to include in the prompt for processing
+        text: plain text containing the paragraphs you would like to include in the prompt for processing
         model: the OpenAI model you would like to ingest your prompt
-
+        promt: a custom prompt
     """
     openai.api_key = os.getenv("OPENAI_KEY")
 
@@ -62,25 +63,15 @@ async def query_gpt(text, model="text-davinci-003", prompt=Prompt()):
 
         os.remove(f"src/temp/temp_{i}.md")
 
-def new_deck(name):
-    """Creates a new deck in Mochi
+def set_deck(name, parent=None):
+    """Checks if a deck exists in Mochi and creates a new deck if it doesn't.
     
     Args:
-        name: The name of the deck you would like to create
-        parent: If you are creating a nested deck, supply the parent here
+        name: The name of the deck you would like to add to or create
+        parent: If you are creating a nested deck, supply the name of the parent here
     """
 
-    logging.basicConfig(
-        format="%(asctime)s %(levelname)-8s %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S",
-        level=logging.DEBUG,
-    )
-    logger = logging.getLogger()
-
-    # Optional debugging statement
-    # breakpoint()  # py3.7+
-    # import pdb; pdb.set_trace()  # py3.6-
-
+    # set variables and logging config
     mochikey = os.getenv("MOCHI_KEY")
     apikey = (mochikey, '')
     site = 'https://app.mochi.cards/api/decks'
@@ -88,14 +79,34 @@ def new_deck(name):
                 "Content-Type": "application/json",
                 "Accept": "application/json"
                 }
-    payload = {
-                "name": name,
-                "parent-id": "LrTAyWQ1"
-                }
     
-    deck = httpx.post(site, auth=apikey, headers=headers, json=payload)
+    logging.basicConfig(
+        format="%(asctime)s %(levelname)-8s %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+        level=logging.DEBUG,
+    )
+    logger = logging.getLogger()
 
-    return deck
+    # check if deck already exists
+    getdeck_resp = httpx.get(site, auth=apikey)
+    deck_list = json.loads(getdeck_resp.text)
+    for obj in deck_list['docs']:
+        if name in obj['name'] == name:
+            return obj['id']
+
+    # check if a parent-id was supplied
+    if parent != None:
+        for obj in deck_list['docs']:
+            if parent in obj['name'] == parent:
+                parentid = obj['id']
+        payload = { "name": name, "parent-id": parentid }
+    else:
+        payload = { "name": name }
+
+    # make a new deck if it doesn't exist
+    makedeck_resp = httpx.post(site, auth=apikey, headers=headers, json=payload)
+    deck = json.loads(makedeck_resp.text)
+    return deck['id']
 
 def format_data(data):
     content = []
@@ -109,7 +120,13 @@ def format_data(data):
     content.append(string)  # Add the final string to the content list
     return content
 
-def new_card(file):
+def new_card(file, deck=None):
+    """Creates new cards based on the response from GPT
+    
+    Args: 
+        file: a file containing the response from GPT, usually 'src/cards/flashcard_{i}.md'
+        deck: the deck-id of the deck you would like to add cards to
+    """
 
     with open(file, "rt", encoding="utf-8") as f:
         data = f.readlines()
@@ -134,7 +151,7 @@ def new_card(file):
                   }
         payload = {
                     "content": card,
-                    "deck-id": "LrTAyWQ1",
+                    "deck-id": deck,
                   }
 
         card = httpx.post(site, auth=apikey, headers=headers, json=payload)

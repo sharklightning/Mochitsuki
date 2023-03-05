@@ -28,6 +28,14 @@ async def index():
     if form.validate_on_submit():
         textinput = form.textinput.data
         model = form.model.data
+        deck = form.deck.data
+        parent = form.parent.data
+
+        if (parent != None) and (parent != ''):
+            deck_id = set_deck(deck, parent)
+        else:
+            deck_id = set_deck(deck)
+
         session['model'] = model
         store_selections(textinput, model)
         app.logger.debug("MODEL= " + model + ", INPUT= " + textinput)
@@ -37,7 +45,7 @@ async def index():
         for file in os.listdir("src/cards/"):
             if file != '.gitignore':
                 file_name = "src/cards/" + file
-                new_card(file_name)
+                new_card(file_name, deck_id)
                 os.remove(file_name)
 
         return redirect(url_for('index'))
