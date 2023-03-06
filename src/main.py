@@ -12,14 +12,6 @@ app.config['SECRET_KEY'] = os.getenv("WTF_KEY")
 
 app.logger.setLevel(DEBUG)
 
-selections = []
-
-def store_selections(textinput, model):
-    selections.append(dict(
-        textinput = textinput,
-        model = model
-    ))
-
 @app.route('/', methods=['GET', 'POST'])
 async def index():
     form = WelcomeForm()
@@ -30,6 +22,7 @@ async def index():
         model = form.model.data
         deck = form.deck.data
         parent = form.parent.data
+        prompt_selection = form.prompt.data
 
         if (parent != None) and (parent != ''):
             deck_id = set_deck(deck, parent)
@@ -37,11 +30,10 @@ async def index():
             deck_id = set_deck(deck)
 
         session['model'] = model
-        store_selections(textinput, model)
         app.logger.debug("MODEL= " + model + ", INPUT= " + textinput)
         flash("Request submitted to: {}".format(model))
 
-        await query_gpt(textinput, model)
+        await query_gpt(textinput, model, prompt_selection)
         for file in os.listdir("src/cards/"):
             if file != '.gitignore':
                 file_name = "src/cards/" + file
