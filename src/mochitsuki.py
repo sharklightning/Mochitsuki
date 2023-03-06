@@ -122,11 +122,19 @@ def set_deck(name, parent=None):
             return obj['id']
 
     # check if a parent-id was supplied
+    parentid = None
     if parent != None:
         for obj in deck_list['docs']:
             if parent in obj['name'] == parent:
                 parentid = obj['id']
-        payload = {"name": name, "parent-id": parentid}
+        if parentid != None:
+            payload = {"name": name, "parent-id": parentid}
+        else: # if it does not exist, create it
+            parent_req_payload = {"name": parent}
+            parent_resp = httpx.post(site, auth=apikey, headers=headers, json=parent_req_payload)
+            parent_resp_json = json.loads(parent_resp.text)
+            parentid = parent_resp_json['id']
+            payload = {"name": name, "parent-id": parentid}
     else:
         payload = {"name": name}
 
