@@ -5,14 +5,16 @@
 
 Mochitsuki takes any text input. By default it generates flashcards using OpenAI's Turbo GPT-3.5 model, in markdown format. 
 
-Optionally you can configure Mochitsuki to automatically import to [Mochi](https://mochi.cards/) (this requires Mochi Pro subscription). Alternatively, you can dump the cards as an Anki or Mochi export and manually import them to your preferred flashcard application. 
+Currently, Mochitsuki automatically imports cards to [Mochi](https://mochi.cards/) (this requires Mochi Pro subscription). 
+
+I plan to add an option in the near future to dump the cards as an Anki or Mochi export so that you manually import them to your preferred flashcard application without Mochi pro. 
 
 ## Prerequisites
 You will need Docker installed in order to run Mochitsuki on your local machine. 
 
 You will need your own OpenAI account and API key. You can sign up for one [here](https://openai.com/product).
 
-Optionally, you can use Mochitsuki to automate the step of importing your cards to Mochi. This allows you to go from text input to imported flash cards in a single step, but requires a Mochi pro subscription so you can use their API.   
+A Mochi pro subscription so you can use their API.  
 
 ## Usage
 Clone this git repository to your local machine  
@@ -43,69 +45,6 @@ Alternatively, if you would like to run Mochitsuki in development mode so that y
 ```docker-compose up --build```
 
 Navigate to 127.0.0.1:5000 in the URL field of your web browser. 
-
-## Default Prompt
-
-Currently, the working default prompt is:
-
->Please perform the following steps on the text given after "Text input:" below 
->- Extract and condense the most important details of the text
->- Use these bullet points to generate flash card style question and answer pairs
->- Always begin a question with "Q:"
->- Always begin an answer with "A:"
->- If the text contains code blocks, use code examples in your  questions and answers as appropriate, using markdown to format the examples as a code block
->- Format the answers in concise bullet points
->- Respond to this prompt with only the final form of the questions and answers, formatted according to the instructions above  
->Text input: {Text input}
-
-### Example:
-
-***Text input:***
-
->"IP is a routed protocol and a logical addressing method that operates at the Network layer of the OSI model. IPv4 supports unicast, multicast, and broadcast addressing of packets. A basic IPv4 header without options is 20 octets in length; 20 octets is equal to 20 bytes, or 160 bits."
-
-***Response:***  
-
->Q: What is IP?  
->A: IP is a routed protocol that operates at the Network layer of the OSI model.
-
->Q: What types of addressing does IPv4 support?  
->A: IPv4 supports unicast, multicast, and broadcast addressing of packets.
-
->Q: How many octets is a basic IPv4 header without options?  
->A: 20 octets (or 20 bytes, or 160 bits).
-
-Users are encouraged to improve upon this prompt or modify it to suit your particular needs. 
-
-It is one of our goals on this project to build a library of purpose suited prompts. Please do not hesitate to submit a PR if you think you're prompt might be useful to others. 
-
-## Alternative prompts
-
-### Coding prompt (general):
-***Prompt***  
-
->Write a flashcard to help remember the following topic:  
->{Text input}
->- Give an example of code in the question
->- Format any code in blocks formatted with markdown
->- Abbreviate the words "Question" and "Answer" as Q and A respectively
-
-***Text input***
-
-How to convert a for loop to a list comprehension in python
-
-***Response***  
-
->Q: How to convert a for loop to a list comprehension in python (ex. `for i in range(5):`)?  
-
->A: Create a new list and use a `[expression for item in list]` syntax to append items to the list. 
->```
->old_list = []
->for i in range(5):
->    old_list.append(i)
->
->new_list = [i for i in range(5)]
->```
 
 ## Roadmap
 - build in concurrency and rate limiting safegaurds for large batches
