@@ -17,6 +17,13 @@ class Tsuki:
         self.parent = parent
         openai.api_key = os.getenv("OPENAI_KEY")
 
+        logging.basicConfig(
+            format="%(asctime)s %(levelname)-8s %(message)s",
+            datefmt="%Y-%m-%d %H:%M:%S",
+            level=logging.DEBUG,
+        )
+        logger = logging.getLogger()
+
     def query_gpt(self):
         if self.prompt == 'default':
             self._defaultprompt()
@@ -26,7 +33,7 @@ class Tsuki:
     def set_deck(self):
         """Checks if a deck exists, creates one if it doesn't, and returns the deck id"""
 
-        # set variables and logging config
+        # set variables
         mochikey = os.getenv("MOCHI_KEY")
         apikey = (mochikey, '')
         site = 'https://app.mochi.cards/api/decks'
@@ -34,34 +41,22 @@ class Tsuki:
             "Content-Type": "application/json",
             "Accept": "application/json"
         }
-
-        logging.basicConfig(
-            format="%(asctime)s %(levelname)-8s %(message)s",
-            datefmt="%Y-%m-%d %H:%M:%S",
-            level=logging.DEBUG,
-        )
-        logger = logging.getLogger()
-
-        # check if deck already exists
+        
         getdeck_resp = httpx.get(site, auth=apikey)
         deck_list = json.loads(getdeck_resp.text)
-        # refactor the code below as:
-        # deck = {deck['name']: deck['id'] for deck in deck_list['docs'] if deck['name'] == name}
-        # if deck != {}:
-        #     return deck[name]
-        for obj in deck_list['docs']:
-            if self.deck in obj['name'] == self.deck:
-                return obj['id']
 
-        # check if a parent-id was supplied
-        parentid = None
-        if self.parent != None:
-            for obj in deck_list['docs']:
-                if self.parent in obj['name'] == self.parent:
-                    parentid = obj['id']
-            if parentid != None:
+        # check if deck already exists
+        deck = {deck['name']: deck['id'] for deck in deck_list['docs'] if deck['name'] == self.deck}
+        if deck:
+            return deck[self.deck]
+
+        # if parent was passed, check if it exists and create if not
+        if self.parent:
+            deck = {deck['name']: deck['id'] for deck in deck_list['docs'] if deck['name'] == self.parent}
+            if deck:
+                parentid = deck[self.parent]
                 payload = {"name": self.deck, "parent-id": parentid}
-            else: # if it does not exist, create it
+            else:
                 parent_req_payload = {"name": self.parent}
                 parent_resp = httpx.post(site, auth=apikey, headers=headers, json=parent_req_payload)
                 parent_resp_json = json.loads(parent_resp.text)
@@ -84,13 +79,6 @@ class Tsuki:
         headers = {
             "Content-Type": "application/json"
         }
-
-        logging.basicConfig(
-            format="%(asctime)s %(levelname)-8s %(message)s",
-            datefmt="%Y-%m-%d %H:%M:%S",
-            level=logging.DEBUG,
-        )
-        logger = logging.getLogger()
         
         with open(file_name, "rt", encoding="utf-8") as f:
             data = f.readlines()
