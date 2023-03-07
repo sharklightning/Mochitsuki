@@ -36,7 +36,6 @@ async def index():
                 tsuki.set_card(file_name)
                 os.remove(file_name)
 
-        # debugging and logging
         app.logger.debug("INPUT= " + textinput)
         flash("Request successful. {} cards created. Tokens used: {}".format(cards, tokens))
 
