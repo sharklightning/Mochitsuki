@@ -12,19 +12,18 @@ Mochitsuki -- Welcome
 		{{form.hidden_tag()}}
 
 		<fieldset>
-		{% for subfield in form.model %}
+		{% for subfield in form.prompt %}
 		<div>
-			{% if subfield.data == form.model.data %}
+			{% if subfield.data == form.prompt.data %}
 			{{ subfield(id=subfield.id, value=subfield.data, checked=true) }}
 			{% else %}
-			{{ subfield(id=subfield.id, value=subfield.data, checked= subfield.data == form.model.choices[0][0] ) }}
+			{{ subfield(id=subfield.id, value=subfield.data, checked= subfield.data == form.prompt.choices[0][0] ) }}
 			{% endif %}
 			{{ subfield.label }}
 		</div>
 		{% endfor %}
 		</fieldset>
-		
-		<div>{{ form.prompt }}</div>
+
 		<div>{{ form.parent(placeholder="Parent (optional)") }} {{ form.deck(placeholder="Deck") }}</div>
 
 		{{ form.textinput(id="text-input", rows="10", cols="75", placeholder="Enter the text you would like to generate cards from here") | safe }}
