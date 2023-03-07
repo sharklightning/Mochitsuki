@@ -28,10 +28,8 @@ async def index():
         
         if (parent != None) and (parent != ''):
             tsuki = Tsuki(textinput, model, deck, prompt_selection, parent)
-            # deck_id = tsuki.set_deck()
         else:
             tsuki = Tsuki(textinput, model, deck, prompt_selection)
-            # deck_id = tsuki.set_deck()
 
         tsuki.query_gpt()
         
