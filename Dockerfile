@@ -11,4 +11,4 @@ RUN mkdir -p src/cards && mkdir -p src/resp && mkdir -p src/temp
 
 COPY . /app
 
-CMD ["python", "src/main.py"]
+CMD ["python", "src/_main.py"]
