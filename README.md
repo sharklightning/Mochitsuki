@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Mochitsuki takes any text input. By default it generates flashcards using OpenAI's GPT-3 Davinci model, in markdown format. 
+Mochitsuki takes any text input. By default it generates flashcards using OpenAI's Turbo GPT-3.5 model, in markdown format. 
 
 Optionally you can configure Mochitsuki to automatically import to [Mochi](https://mochi.cards/) (this requires Mochi Pro subscription). Alternatively, you can dump the cards as an Anki or Mochi export and manually import them to your preferred flashcard application. 
 
@@ -29,6 +29,9 @@ Add your OpenAI api key into the .env file:
 
 Optionally, add your Mochi api key as well:  
 ```echo MOCHI_KEY=your-api-key-here >> src/.env```
+
+You will also need to generate a long random number in whatever way you like and store it as the WTF_KEY for the web form to work correctly:
+```echo WTF_KEY=<long-random-number-here> >> src/.env```
 
 Build the Mochitsuki docker image  
 ```docker build -t tsuki-image .```
