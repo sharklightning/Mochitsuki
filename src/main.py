@@ -17,15 +17,13 @@ app.logger.setLevel(DEBUG)
 @app.route('/', methods=['GET', 'POST'])
 async def index():
     form = TsukiForm()
-    # if session.get('prompt'):
-    #     form.prompt.data = session.get('prompt') # Check if prompt is stored in the session and persist it if so
     if form.validate_on_submit():
         textinput = form.textinput.data
         deck = form.deck.data
         prompt_selection = form.prompt.data
         parent = form.parent.data
         
-        if (parent != None) and (parent != ''):
+        if parent:
             tsuki = Tsuki(textinput, deck, prompt_selection, parent)
         else:
             tsuki = Tsuki(textinput, deck, prompt_selection)
@@ -37,11 +35,6 @@ async def index():
                 file_name = "src/cards/" + file
                 tsuki.set_card(file_name)
                 os.remove(file_name)
-
-        # persist choices for duration of session
-        session['deck'] = deck
-        session['prompt_selection'] = prompt_selection
-        session['parent'] = parent
 
         # debugging and logging
         app.logger.debug("INPUT= " + textinput)

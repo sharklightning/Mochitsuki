@@ -1,23 +1,12 @@
-import openai
-import re
-import os
-import httpx
-import logging
-import asyncio
 import json
-from dotenv import load_dotenv
-from print_response import print_response
-
+import logging
+import os
+import re
+import httpx
+import openai
 
 class Tsuki:
-    """The Tsuki Class creates an object for interacting with the OpenAI and Mochi APIs
-    
-    Args:
-        text:
-        deck:
-        prompt_selection:
-        parent (optional):
-    """
+    """The Tsuki Class creates an object for interacting with the OpenAI and Mochi APIs"""
 
     def __init__(self, text, deck, prompt_selection, parent=None):
         self.text = text
@@ -43,7 +32,6 @@ class Tsuki:
     def set_deck(self):
         """Checks if a deck exists, creates one if it doesn't, and returns the deck id"""
 
-        # set variables
         mochikey = os.getenv("MOCHI_KEY")
         apikey = (mochikey, '')
         site = 'https://app.mochi.cards/api/decks'
@@ -60,7 +48,7 @@ class Tsuki:
         if deck:
             return deck[self.deck]
 
-        # if parent was passed, check if it exists and create if not
+        # check if parent exists and create if not
         if self.parent:
             deck = {deck['name']: deck['id'] for deck in deck_list['docs'] if deck['name'] == self.parent}
             if deck:
@@ -120,7 +108,7 @@ class Tsuki:
                 string = ''
             else:
                 string += i
-        content.append(string)  # Add the final string to the content list
+        content.append(string)
         return content
 
     def _requestchat(self, user_content, role_content):
