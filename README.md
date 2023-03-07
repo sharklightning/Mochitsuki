@@ -46,6 +46,23 @@ Alternatively, if you would like to run Mochitsuki in development mode so that y
 
 Navigate to 127.0.0.1:5000 in the URL field of your web browser. 
 
+## Examples:
+
+***Text input:***
+
+>"IP is a routed protocol and a logical addressing method that operates at the Network layer of the OSI model. IPv4 supports unicast, multicast, and broadcast addressing of packets. A basic IPv4 header without options is 20 octets in length; 20 octets is equal to 20 bytes, or 160 bits."
+
+***Response:***  
+
+>Q: What is IP?  
+>A: IP is a routed protocol that operates at the Network layer of the OSI model.
+
+>Q: What types of addressing does IPv4 support?  
+>A: IPv4 supports unicast, multicast, and broadcast addressing of packets.
+
+>Q: How many octets is a basic IPv4 header without options?  
+>A: 20 octets (or 20 bytes, or 160 bits).
+
 ## Roadmap
 - build in concurrency and rate limiting safegaurds for large batches
 - add support for anki export/import
