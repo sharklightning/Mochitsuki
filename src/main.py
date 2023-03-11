@@ -5,6 +5,8 @@ from tsuki import Tsuki
 from flask import Flask, render_template, url_for, request, flash, redirect, session
 from logging import DEBUG
 
+THIS IS JUST A TEST
+
 def configure():
     load_dotenv()
 
